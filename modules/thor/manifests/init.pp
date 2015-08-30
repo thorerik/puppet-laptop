@@ -18,6 +18,9 @@ node default {
   include dotfiles
   include atom
   include skype
+  include ssh_keygen
+  include systemd-user-services
+  include mopidy
 
   class { 'composer':
     command_name => 'composer',
