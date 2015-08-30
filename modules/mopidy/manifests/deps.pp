@@ -1,6 +1,11 @@
 # == Class: mopidy::deps
 #
 class mopidy::deps {
+  package { 'gcc':
+    ensure => installed,
+    allow_virtual => true,
+  }
+  ->
   package { 'libffi48-devel':
     ensure => installed,
     allow_virtual => true,
