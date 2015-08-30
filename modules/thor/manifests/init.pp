@@ -14,6 +14,8 @@ node default {
   include plaidchat
   include gist
   include php
+  include powerlinefonts
+  include dotfiles
 
   class { 'composer':
     command_name => 'composer',
@@ -34,6 +36,13 @@ node default {
       Package['virtualbox'],
       Package['zsh']
     ]
+  }
+  ->
+  file { "${home}/src":
+    ensure => directory,
+    mode => '0644',
+    owner => $real_id,
+    group => 'users'
   }
 
   class { 'ohmyzsh': }
