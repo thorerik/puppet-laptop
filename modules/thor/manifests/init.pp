@@ -1,30 +1,30 @@
 node default {
 
-  zypprepo { 'nVidia Graphics Drivers':
-    name => 'nVidia Graphics Drivers',
-    enabled => 1,
-    autorefresh => 1,
-    baseurl => 'http://download.nvidia.com/opensuse/13.2/',
-    path => '/'
-  }
-  opensuse_repo { 'mozilla':
-    enabled => 1,
-    autorefresh => 1,
-  }
-  opensuse_repo { 'Virtualization':
-    enabled       => 1,
-    autorefresh   => 1,
-  }
-
+  include repositories
   include zsh
   include vim
   include puppet-vim
   include curl
   include terminology
+  include virtualbox
+  include offlineimap
+  include mutt
+  include msmtp
+  include node-js
+  include plaidchat
+
+  if $hostname == 'thor-opensuse' {
+    include dell
+  }
 
   user { 'thor':
     ensure => present,
-    shell => '/usr/bin/zsh'
+    shell => '/usr/bin/zsh',
+    groups => ['vboxusers'],
+    require => [
+      Package['virtualbox'],
+      Package['zsh']
+    ]
   }
 
   class { 'ohmyzsh': }

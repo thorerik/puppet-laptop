@@ -1,0 +1,1 @@
+text/html; /usr/bin/w3m -I %{charset} -cols 90 -dump -T text/html '%s'; copiousoutput;

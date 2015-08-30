@@ -1,0 +1,25 @@
+set spoolfile = "+Personal/INBOX"
+
+source ~/.mutt/accounts/personal
+
+folder-hook Personal/* source ~/.mutt/accounts/personal
+folder-hook Work/*     source ~/.mutt/accounts/work
+
+set reverse_alias="yes"
+
+set mailcap_path="~/.mutt/mailcap"
+
+source ~/.mutt/bindings
+source ~/.mutt/aliases
+source ~/.mutt/auto_view
+
+set charset="utf-8"
+set edit_headers="yes"
+set quote_regexp="^([ \t]*[|>:}])+"
+set sort="threads"
+set sort_aux="last-date-received"
+set use_from
+set editor="vim '+set textwidth=75 wrap'"
+
+source ~/.mutt/gnupg
+source ~/.mutt/mutt-colors-solarized-dark-256.muttrc 

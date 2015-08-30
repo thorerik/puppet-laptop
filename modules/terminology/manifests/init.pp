@@ -1,24 +1,17 @@
 class terminology {
 
+  $folders = [
+    "${home}/.config",
+    "${home}/.config/terminology",
+    "${home}/.config/terminology/standard"
+  ]
 
   package { 'terminology':
     ensure => installed,
     allow_virtual => true,
   }
   ->
-  file { "${home}/.config":
-    ensure => directory,
-    owner => $real_id,
-    group => 'users',
-  }
-  ->
-  file { "${home}/.config/terminology":
-    ensure => directory,
-    owner => $real_id,
-    group => 'users',
-  }
-  ->
-  file { "${home}/.config/terminology/standard":
+  file { $folders:
     ensure => directory,
     owner => $real_id,
     group => 'users',

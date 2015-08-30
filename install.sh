@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -x
 set -e
 
 sudo FACTER_home=$HOME \

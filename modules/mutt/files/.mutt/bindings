@@ -1,0 +1,3 @@
+macro index,pager <f2> '<change-folder>=Personal/INBOX<enter>'
+macro index,pager <f3> '<change-folder>=Work/INBOX<enter>'
+macro index,pager <f4> '<change-folder>=Personal/Activity<tab><enter>'

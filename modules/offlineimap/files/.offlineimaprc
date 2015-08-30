@@ -1,0 +1,55 @@
+[general]
+accounts = Personal,Work
+pythonfile = ~/.offlineimap.py
+maxsyncaccounts = 2
+
+[mbnames]
+enabled = yes
+filename = ~/.mutt/mailboxes
+header = "mailboxes "
+peritem = "+%(accountname)s/%(foldername)s"
+sep = " "
+footer = "\n"
+
+[Account Personal]
+localrepository = PersonalLocal
+remoterepository = PersonalRemote
+status_backend = sqlite
+autorefresh = 5
+
+[Account Work]
+localrepository = WorkLocal
+remoterepository = WorkRemote
+status_backend = sqlite
+autorefresh = 5
+
+[Repository PersonalLocal]
+type = Maildir
+localfolders = ~/Mail/Personal
+
+[Repository PersonalRemote]
+type = IMAP
+remotehost = epost.telsys.no
+remoteuser = thor@thorerik.com
+remotepasseval = get_pass("Personal") 
+ssl = yes
+maxconnections = 5
+sslcacertfile = /etc/ssl/ca-bundle.pem
+keepalive = 60
+holdconnectionopen = yes
+
+[Repository WorkLocal]
+type = Maildir
+localfolders = ~/Mail/Work
+
+[Repository WorkRemote]
+type = IMAP
+remotehost = owa.basefarm.com
+remoteuser = thor
+remotepasseval = get_pass("Work")
+ssl = yes
+maxconnections = 1
+sslcacertfile = /etc/ssl/ca-bundle.pem
+keepalive = 60
+holdconnectionopen = yes
+folderfilter = lambda foldername: foldername not in ['Deleted Items', 'Contacts', 'Calendar', 'Trash', 'Calendar/Discordian', 'Calendar/Calendar', 'Calendar/Ukenummer', 'Calendar/Primstaven', 'Calendar/Flaggdager', 'Calendar/Navnedager', 'Calendar/Norske hellig- og merkedager', 'Contacts/Skype for Business Contacts', 'Sync Issues/Conflicts']
