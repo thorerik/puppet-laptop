@@ -16,6 +16,7 @@ class powerlinefonts {
     user => $real_id,
     cwd => "${home}/src/fonts",
     environment => "HOME=${home}",
+    creates => "${home}/.fonts/ter-powerline-x12b.pcf.gz",
     require => [
       Vcsrepo["${home}/src/fonts"]
     ]

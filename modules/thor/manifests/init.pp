@@ -16,6 +16,8 @@ node default {
   include php
   include powerlinefonts
   include dotfiles
+  include atom
+  include skype
 
   class { 'composer':
     command_name => 'composer',

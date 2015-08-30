@@ -13,6 +13,7 @@ class dotfiles {
     user => $real_id,
     cwd => "${home}/dotfiles",
     environment => "HOME=${home}",
+    creates => "${home}/.tmux.conf",
     require => [
       Vcsrepo["${home}/dotfiles"]
     ]
