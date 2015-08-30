@@ -12,12 +12,21 @@ node default {
   include msmtp
   include node-js
   include plaidchat
+  include gist
+  include php
+
+  class { 'composer':
+    command_name => 'composer',
+    target_dir   => "${home}/bin",
+    auto_update => true,
+    user => $real_id
+  }
 
   if $hostname == 'thor-opensuse' {
     include dell
   }
 
-  user { 'thor':
+  user { $real_id:
     ensure => present,
     shell => '/usr/bin/zsh',
     groups => ['vboxusers'],
@@ -29,7 +38,7 @@ node default {
 
   class { 'ohmyzsh': }
 
-  ohmyzsh::install { ['root','thor']: }
+  ohmyzsh::install { ['root', $real_id]: }
 
 
 }
