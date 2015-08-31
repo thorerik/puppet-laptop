@@ -13,4 +13,8 @@ class sky ($version = 'v2.0.391'){
     ensure => installed,
     allow_virtual => false,
   }
+  package { 'libopenssl0_9_8':
+    ensure => installed,
+    allow_virtual => true,
+  }
 }
