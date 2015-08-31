@@ -31,6 +31,7 @@ node default {
 
   if $hostname == 'thor-opensuse' {
     include dell
+    include sky
   }
 
   user { $real_id:
