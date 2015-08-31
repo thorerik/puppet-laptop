@@ -21,6 +21,7 @@ node default {
   include ssh_keygen
   include systemd-user-services
   include mopidy
+  include tmux
 
   class { 'composer':
     command_name => 'composer',

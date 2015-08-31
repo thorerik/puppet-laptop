@@ -16,7 +16,6 @@ class mutt {
   ->
   file { "${home}/Mail":
     ensure => directory,
-    mode => '0600',
     owner => $real_id,
     group => 'users',
   }
