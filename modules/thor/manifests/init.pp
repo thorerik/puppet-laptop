@@ -22,6 +22,7 @@ node default {
   include systemd-user-services
   include mopidy
   include tmux
+  include phpstorm
 
   class { 'composer':
     command_name => 'composer',
